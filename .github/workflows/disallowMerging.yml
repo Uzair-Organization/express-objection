@@ -1,0 +1,23 @@
+name: actions_on_master_branch
+on: 
+  pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+    branches:    
+      - 'master'
+
+jobs:
+  job1:
+    name: verify_admin_account
+    runs-on: ubuntu-latest
+    env:
+      NAME_ADMIN: uzairsaeed675
+    steps:
+      - name: not_admin
+        if: ${{ github.actor != env.NAME_ADMIN }}
+        run: exit 1
+      - name: is_admin
+        if: ${{ github.actor == env.NAME_ADMIN }}
+        run: echo "ok"

@@ -1,11 +1,12 @@
 name: actions_on_master_branch
-on: 
+
+on:
   pull_request_target:
     types:
       - opened
       - synchronize
       - reopened
-    branches:    
+    branches:
       - 'master'
 
 jobs:
@@ -18,6 +19,6 @@ jobs:
       - name: not_admin
         if: ${{ github.actor != env.NAME_ADMIN }}
         run: exit 1
-      - name: is_admin_true
+      - name: is_admin
         if: ${{ github.actor == env.NAME_ADMIN }}
         run: echo "ok"

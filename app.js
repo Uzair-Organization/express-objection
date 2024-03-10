@@ -8,7 +8,7 @@ async function startServer() {
 
   await loaders({ expressApp: app });
 
-  // start server
+  // start express server
   app.listen(config.port, () => {
     logger.info(`Server is listening on port: ${config.port}`);
   }).on('error', err => {

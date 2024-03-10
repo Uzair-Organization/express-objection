@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: not_admin
         if: ${{ github.actor != env.NAME_ADMIN }}
-        run: echo "Not admin" && exit 1
+        run: exit 1
       - name: is_admin
         if: ${{ github.actor == env.NAME_ADMIN }}
         run: echo "ok"
